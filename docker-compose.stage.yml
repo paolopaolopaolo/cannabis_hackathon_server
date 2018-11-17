@@ -1,0 +1,34 @@
+services:
+  app:
+    build:
+      context: ./django_app
+      dockerfile: Dockerfile.remote
+    depends_on:
+    - db
+    env_file:
+    - ./envs/stage.env
+    volumes:
+    - runtime:/tmp
+    - static:/server/static
+  db:
+    env_file:
+    - ./envs/stage.env
+    image: postgres:11-alpine
+  proxy:
+    build:
+      context: ./proxy
+      dockerfile: Dockerfile
+    depends_on:
+    - app
+    env_file:
+    - ./envs/stage.env
+    ports:
+    - 80:80
+    - 443:443
+    volumes:
+    - runtime:/tmp
+    - static:/static
+version: '3'
+volumes:
+  runtime: null
+  static: null
