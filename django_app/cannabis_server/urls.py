@@ -22,7 +22,7 @@ from drf_yasg import openapi
 from rest_framework import permissions
 from rest_framework.routers import SimpleRouter
 
-from review.views import ReviewViewSet
+from review.views import ReviewViewSet, ProductViewSet
 from user.api.views import UserViewSet
 
 schema_view = get_schema_view(
@@ -41,6 +41,7 @@ schema_view = get_schema_view(
 router = SimpleRouter()
 router.register('user', UserViewSet, base_name='user')
 router.register('review', ReviewViewSet, base_name='review')
+router.register('product', ProductViewSet, base_name='product')
 
 urlpatterns = [
     path('admin/', admin.site.urls),

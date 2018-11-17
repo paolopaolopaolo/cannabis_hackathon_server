@@ -1,5 +1,5 @@
 from django.db import models
-
+from user.caliva import *
 
 # Create your models here.
 from user.models import HighProfile
@@ -14,7 +14,9 @@ class Review(models.Model):
 
     @property
     def get_product(self):
+        search_for_products(self.product_id)
         ## TODO: Emmanual to insert all this
+
         pass
 
 

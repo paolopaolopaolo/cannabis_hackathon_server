@@ -3,7 +3,7 @@ from drf_yasg.utils import swagger_auto_schema
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework.serializers import ModelSerializer
-from rest_framework.viewsets import ModelViewSet
+from rest_framework.viewsets import ModelViewSet, ViewSet
 from review.models import Review
 from user.caliva import Caliva
 
@@ -19,10 +19,13 @@ class ReviewViewSet(ModelViewSet):
     queryset = Review
     serializer_class = ReviewSerializer
 
-    @action(methods=['GET'], detail=True)
+class ProductViewSet(ViewSet):
+
+    @action(methods=['GET'], detail=False)
     def products(self, request):
         caliva_api = Caliva()
         # TODO: Return all products from Caliva
-
-        return Response(data={}, status=200)
+        products = caliva_api.search_for_products()
+        print(products)
+        return Response(data={'result': products}, status=200)
 
