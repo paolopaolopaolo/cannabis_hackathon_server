@@ -1,4 +1,5 @@
 import requests
+import pprtint
 
 base_url = "https://api.calivahack.io"
 products = "/products/v2/retail"
@@ -7,12 +8,14 @@ api_key = {'apikey': 'Caliva420'}
 search_location = "/locator/v2/storeLocator"
 locations = "/locator/v2/stores"
 
-class Caliva:
-  def search_for_products(id: None, name: None):
+
+class Caliva(object):
+
+  def search_for_products(id=None, name=None):
     # search for a single product by id
     product_id = f"/{id}"
     if product_id:
-      all_weed = requests.get(base_url+product_id,  headers= api_key)
+      all_weed = requests.get(base_url+products+product_id,  headers= api_key)
       for ganja in all_weed:
         return ganja
     else:
@@ -26,7 +29,7 @@ class Caliva:
         for weed in all_products:
           return weed
 
-  def search_for_location(location: None):
+  def search_for_location(location=None):
     # search for a single location
     if location:
       payload = { "location": str(location)}
