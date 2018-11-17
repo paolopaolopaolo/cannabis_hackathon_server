@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'drf_yasg',
 
     # Local
-    'user'
+    'user',
+    'review'
 ]
 
 MIDDLEWARE = [
