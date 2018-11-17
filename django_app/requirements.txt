@@ -1,7 +1,11 @@
+certifi==2018.10.15
+chardet==3.0.4
 Django==2.0.7
 djangorestframework==3.8.2
+idna==2.7
+Pillow==5.2.0
 psycopg2==2.7.5
 pytz==2018.5
-smart_getenv==1.1.0
-Pillow==5.2.0
-
+requests==2.20.1
+smart-getenv==1.1.0
+urllib3==1.24.1
