@@ -9,7 +9,11 @@ from user.models import HighProfile
 
 class UserViewSet(ViewSet):
 
-    @swagger_auto_schema(methods=['post'], request_body=SignUpRequestSerializer)
+    @swagger_auto_schema(methods=['post'],
+                         request_body=SignUpRequestSerializer,
+                         operation_description='Signup /api/v1/user/signup',
+                         responses={201: 'Success'}
+                         )
     @action(methods=['POST'], detail=False)
     def signup(self, request):
         serializer = SignUpRequestSerializer(data=request.data)

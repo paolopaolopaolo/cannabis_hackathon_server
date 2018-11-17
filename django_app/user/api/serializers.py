@@ -9,11 +9,13 @@ class SignUpRequestSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ('email', 'password')
+        fields = ('email', 'password', 'first_name', 'last_name')
 
 
 class UpdateProfile(serializers.ModelSerializer):
 
+    profile_type = serializers.CharField(max_length=3)
+
     class Meta:
         model = HighProfile
-        fields = ()
+        fields = ('profile_type, ')
