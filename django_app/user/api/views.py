@@ -1,5 +1,6 @@
 from django.contrib.auth.models import User
 from drf_yasg.utils import swagger_auto_schema
+from rest_framework.authentication import BasicAuthentication
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework.viewsets import ViewSet
@@ -29,3 +30,6 @@ class UserViewSet(ViewSet):
         HighProfile.objects.create(user=user)
         return Response(data={'result': user.pk}, status=201)
 
+    @action(methods=['GET'], detail=False, authentication_classes=[BasicAuthentication])
+    def recommendations(self, *args):
+        return Response(data={'result': 'test'}, status=201)
