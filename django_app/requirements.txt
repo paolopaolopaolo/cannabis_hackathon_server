@@ -1,0 +1,7 @@
+Django==2.0.7
+djangorestframework==3.8.2
+psycopg2==2.7.5
+pytz==2018.5
+smart_getenv==1.1.0
+Pillow==5.2.0
+

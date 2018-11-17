@@ -1,0 +1,18 @@
+version: "3"
+services:
+  app:
+    build:
+      context: ./django_app
+      dockerfile: Dockerfile.dev
+    volumes:
+      - ./django_app:/server
+    env_file:
+      - ./envs/dev.env
+    depends_on:
+      - db
+    ports:
+      - 8000:8000
+  db:
+    image: postgres:11-alpine
+    env_file:
+      - ./envs/dev.env

@@ -1,0 +1,7 @@
+*.pyc
+/envs/*
+.DS_Store
+/.idea/*
+__pycache__
+!/envs/dev.env
+!/envs/remote.env
