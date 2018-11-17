@@ -1,5 +1,7 @@
 from django.contrib.auth.models import User
 from django.test import TestCase
+from rest_framework.reverse import reverse
+
 from user.models import HighProfile, Vendor
 
 
@@ -14,3 +16,8 @@ class UserTestCase(TestCase):
         me2 = User.objects.create(username='dean+12@me.io', email='dean+12@me.io')
         me_profile2 = HighProfile.objects.create(user=me2)
         self.assertFalse(me_profile2.is_owner)
+
+    def test_api_call(self):
+        url = reverse('user-signup')
+        self.client.post(url, data={'email': 'dean@yeti.co', 'password': 'butts'})
+        self.assertTrue(User.objects.first().check_password('butts'))
