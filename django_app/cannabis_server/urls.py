@@ -42,6 +42,6 @@ router.register('user', UserViewSet, base_name='user')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    url('^api/v1', include(router.urls)),
+    url('^api/v1/', include(router.urls)),
     url(r'^docs/$', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc')
 ]
