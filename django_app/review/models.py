@@ -13,4 +13,5 @@ class Review(models.Model):
 
 class Tag(models.Model):
     review = models.ForeignKey(Review, related_name='tags', on_delete=models.CASCADE)
+    content = models.CharField(max_length=20, default='')
 
